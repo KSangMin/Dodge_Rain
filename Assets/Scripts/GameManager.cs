@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
     public void AddScore(int score)
     {
         _score += score;
+        if(score < 0)
+        {
+            _score = 0;
+        }
         scoreText.text = _score.ToString();
     }
 }

@@ -15,7 +15,7 @@ public class Raindrop : MonoBehaviour
         float x = Random.Range(-2.4f, 2.4f);
         float y = Random.Range(3.0f, 5.0f);
         transform.position = new Vector3(x, y, 0);
-        int type = Random.Range(1, 3);
+        int type = Random.Range(1, 5);
 
         switch (type)
         {
@@ -34,9 +34,16 @@ public class Raindrop : MonoBehaviour
                 _score = 3;
                 _renderer.color = new Color(150 / 255f, 150 / 255f, 1f, 1f);
                 break;
+            case 4:
+                _size = 0.8f;
+                _score = -5;
+                _renderer.color = new Color(255 / 255f, 70 / 255f, 52 / 255f, 1f);
+                break;
             default:
                 break;
         }
+
+        transform.localScale = new Vector3(_size, _size, 1);
     }
 
     // Update is called once per frame
