@@ -4,10 +4,38 @@ using UnityEngine;
 
 public class Raindrop : MonoBehaviour
 {
+    private float _size = 1f;
+    private int _score = 0;
+    private SpriteRenderer _renderer;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _renderer = GetComponent<SpriteRenderer>();
+        float x = Random.Range(-2.4f, 2.4f);
+        float y = Random.Range(3.0f, 5.0f);
+        transform.position = new Vector3(x, y, 0);
+        int type = Random.Range(1, 3);
+
+        switch (type)
+        {
+            case 1:
+                _size = 0.6f;
+                _score = 1;
+                _renderer.color = new Color(50 / 255f, 50 / 255f, 1f, 1f);
+                break;
+            case 2:
+                _size = 1.2f;
+                _score = 2;
+                _renderer.color = new Color(100 / 255f, 100 / 255f, 1f, 1f);
+                break;
+            case 3:
+                _size = 1.8f;
+                _score = 3;
+                _renderer.color = new Color(150 / 255f, 150 / 255f, 1f, 1f);
+                break;
+            default:
+                break;
+        }
     }
 
     // Update is called once per frame
