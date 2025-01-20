@@ -7,6 +7,7 @@ public class Raindrop : MonoBehaviour
     private float _size = 1f;
     private int _score = 0;
     private SpriteRenderer _renderer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +47,11 @@ public class Raindrop : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Ground") Destroy(this.gameObject);
+        if (collision.gameObject.CompareTag("Ground")) Destroy(this.gameObject);
+        else if (collision.gameObject.CompareTag("Player")) 
+        { 
+            GameManager.Instance.AddScore(_score);
+            Destroy(this.gameObject);
+        }
     }
 }
